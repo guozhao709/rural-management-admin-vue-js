@@ -48,7 +48,7 @@ onMounted(async () => {
 
 // 获取管理员列表(后端通信)
 const getAdminTable = async () => {
-  const  data  = await getAdminList();
+  const {data} = await getAdminList();
   tableData.value = data;
 };
 
