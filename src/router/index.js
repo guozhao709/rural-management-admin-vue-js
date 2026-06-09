@@ -17,19 +17,23 @@ export default createRouter({
       children: [
         {
           path: "/dashboard",
-          component: () => import("@/pages/function/dashboard.vue"),
+          component: () => import("@/pages/aside/dashboard.vue"),
         },
         {
           path: "/admin",
-          component: () => import("@/pages/function/administrator.vue"),
+          component: () => import("@/pages/aside/administrator.vue"),
         },
         {
           path: "/villagers",
-          component: () => import("@/pages/function/villagers.vue"),
+          component: () => import("@/pages/aside/villagers.vue"),
+        },
+        {
+          path: "/chat",
+          component: () => import("@/pages/aside/chat.vue"),
         },
         {
           path: "/settings",
-          component: () => import("@/pages/function/settings.vue"),
+          component: () => import("@/pages/aside/settings.vue"),
         },
       ],
     },

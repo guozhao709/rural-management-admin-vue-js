@@ -23,10 +23,10 @@ export const menuList = [
     path: "/settings",
     roles: ["super_admin"],
   },
-//   {
-//     index: "key5",
-//     name: "用户管理",
-//     path: "/users",
-//     roles: ["super_admin", "common_admin"],
-//   }
+  {
+    index: "key5",
+    name: "村民聊天",
+    path: "/chat",
+    roles: ["super_admin", "common_admin"],
+  }
 ];
