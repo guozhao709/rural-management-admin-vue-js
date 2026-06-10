@@ -1,12 +1,14 @@
 <template>
   <div class="common-layout">
     <el-container class="common-layout-bigContainer">
-      <el-header>Header</el-header>
+      <el-header class="common-layout-header">Header</el-header>
       <el-container class="common-layout-container">
         <el-aside class="common-layout-aside" width="200px">
           <Aside :asideMenu="asideMenu" />
         </el-aside>
-        <el-main><RouterView /></el-main>
+        <el-main class="common-layout-main">
+          <RouterView />
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -25,11 +27,11 @@ const asideMenu = ref([]);
 
 // 在挂载时需要做的事
 onMounted(() => {
-    const token = localStorage.getItem("token");
-    if(!token){
-      router.push("/login");
-      return;
-    }
+  const token = localStorage.getItem("token");
+  if (!token) {
+    router.push("/login");
+    return;
+  }
   const adminInfo = JSON.parse(localStorage.getItem("adminInfo"));
   if (adminInfo) {
     const { role } = adminInfo;
@@ -47,9 +49,15 @@ onMounted(() => {
   .common-layout-bigContainer {
     height: 100%;
     .common-layout-container {
-      height: 100%;
+      flex: 1;           // 用 flex: 1 填满剩余空间，而非 height: 100% 忽略 header
+      min-height: 0;     // 防止内容溢出撑破父容器
+      .common-layout-main {
+        padding: 0;
+        min-height: 0;   // 允许内部 RouterView 的百分比高度正确约束
+      }
       .common-layout-aside {
         height: 100%;
+        min-height: 0;   // 防止侧栏菜单溢出
         .el-menu-vertical {
           height: 100%;
         }
